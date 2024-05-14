@@ -1,13 +1,6 @@
 name: Build Java Project with Gradle
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [workflow_dispatch]
 
 jobs:
   build:
