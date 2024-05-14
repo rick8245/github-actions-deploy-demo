@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="1.0" application="App1">
+  <application />
+  <orchestrator />
+  <deployables>
+    <file.File name="/File1" file="/File1/tests-unit.yml">
+      <tags />
+      <scanPlaceholders>true</scanPlaceholders>
+      <preScannedPlaceholders>false</preScannedPlaceholders>
+      <placeholders />
+      <fileEncodings>
+        <entry key=".+\.properties">ISO-8859-1</entry>
+      </fileEncodings>
+      <isRescanned>false</isRescanned>
+    </file.File>
+    <file.Archive name="/Arc1" file="/Arc1/xlr-github-plugin-24.1.0-beta.7.jar">
+      <tags />
+      <scanPlaceholders>false</scanPlaceholders>
+      <preScannedPlaceholders>false</preScannedPlaceholders>
+      <placeholders />
+      <fileEncodings>
+        <entry key=".+\.properties">ISO-8859-1</entry>
+      </fileEncodings>
+      <isRescanned>false</isRescanned>
+    </file.Archive>
+  </deployables>
+  <applicationDependencies />
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+  <templates />
+  <boundTemplates />
+</udm.DeploymentPackage>
