@@ -33,4 +33,4 @@ jobs:
           echo "::set-output name=jar-path::$(find . -name '*.jar' | head -n 1)"
 
       - name: Display Jar Path
-        run: echo "${{ job.outputs.jar-path }}"
+        run: echo ${{ job.outputs.jar-path }}
