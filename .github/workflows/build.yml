@@ -1,0 +1,36 @@
+name: Build Java Project with Gradle
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      jar-path: ${{ steps.build.outputs.jar-path }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Gradle
+        id: build
+        run: |
+          ./gradlew build --no-daemon --console=plain
+          echo "::set-output name=jar-path::$(find . -name '*.jar' | head -n 1)"
+
+      - name: Display Jar Path
+        run: echo "Built JAR Path: ${{ job.outputs.jar-path }}"
