@@ -6,9 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    outputs:
-      jar-path: ${{ steps.build.outputs.jar-path }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,9 +18,4 @@ jobs:
 
       - name: Build with Gradle
         id: build
-        run: |
-          ./gradlew build --no-daemon --console=plain
-          echo "::set-output name=jar-path::$(find . -name '*.jar' | head -n 1)"
-
-      - name: Display Jar Path
-        run: echo ${{ job.outputs.jar-path }}
+        run: ./gradlew build --no-daemon --console=plain
