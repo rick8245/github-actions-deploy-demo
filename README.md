@@ -1,6 +1,6 @@
 # GitHub Actions Deploy Demo
 
-This repository demonstrates a GitHub Actions workflow that builds a java gradle project and deploys the package using the [github-actions-deploy-demo](https://github.com/digital-ai/github-actions-deploy-demo) custom action. This guide will walk you through the setup and functionality of the workflow.
+This repository demonstrates a GitHub Actions workflow that builds a java gradle project and deploys the package using the [github-actions-deploy](https://github.com/digital-ai/github-actions-deploy) custom action. This guide will walk you through the setup and functionality of the workflow.
 
 ## Project Overview
 
