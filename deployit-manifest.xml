@@ -4,14 +4,6 @@
   <orchestrator />
   <deployables>
     <file.Archive name="/demoJar" file="/build/libs/demo-0.0.1.jar">
-      <tags />
-      <scanPlaceholders>false</scanPlaceholders>
-      <preScannedPlaceholders>false</preScannedPlaceholders>
-      <placeholders />
-      <fileEncodings>
-        <entry key=".+\.properties">ISO-8859-1</entry>
-      </fileEncodings>
-      <isRescanned>false</isRescanned>
       <targetPath>/tmp</targetPath>
       <targetFileName>demo-0.0.1.jar</targetFileName>
     </file.Archive>
