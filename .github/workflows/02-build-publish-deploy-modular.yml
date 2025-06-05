@@ -80,7 +80,7 @@ jobs:
           serverUrl: '${{ vars.SERVERURL }}'
           username: '${{ secrets.USERNAME }}'
           password: '${{ secrets.PASSWORD }}'
-          action: deploy
+          action: 'deploy'
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
           environmentId: Environments/envForAction2
 
