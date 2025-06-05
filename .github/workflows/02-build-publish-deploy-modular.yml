@@ -7,16 +7,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: adopt
           java-version: '17'
+
       - name: Grant execute permissions to gradlew
         run: chmod +x ./gradlew
+
       - name: Build with Gradle
         id: build
         run: ./gradlew build --no-daemon --console=plain
+
       - name: Create DAR Package
         id: create_pkg
         uses: digital-ai/github-actions-deploy@D-227999
@@ -29,10 +33,12 @@ jobs:
           outputPath: '/outputdar'
           versionNumber: '1.0'
           packageName: 'appForAction-1.0.dar'
+
       - name: Show DAR Path
         run: >
           echo "DAR package created at: ${{
           steps.create_pkg.outputs.darPackagePath }}"
+
       - name: Publish DAR Package
         id: publish_pkg
         uses: digital-ai/github-actions-deploy@D-227999
@@ -42,10 +48,12 @@ jobs:
           password: '${{ secrets.PASSWORD }}'
           action: 'publish'
           darPackagePath: '${{ steps.create_pkg.outputs.darPackagePath }}'
+
       - name: Show Published Package ID
         run: >
           echo "Published Package ID: ${{
           steps.publish_pkg.outputs.deploymentPackageId }}"
+
       - name: Deploy DAR Package - Environment 1
         id: deploy_pkg
         uses: digital-ai/github-actions-deploy@D-227999
@@ -56,6 +64,7 @@ jobs:
           action: 'deploy'
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
           environmentId: 'Environments/envForAction'
+
       - name: Show Deployment Task IDs - Environment 1
         run: >
           echo "Deployment Task ID: ${{
@@ -63,6 +72,7 @@ jobs:
 
           echo "Rollback Task ID (if any): ${{
           steps.deploy_pkg.outputs.rollbackTaskId }}"
+
       - name: Deploy DAR Package - Environment 2
         id: deploy_pkg2
         uses: digital-ai/github-actions-deploy@D-227999
@@ -73,6 +83,7 @@ jobs:
           action: deploy
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
           environmentId: Environments/envForAction2
+
       - name: Show Deployment Task IDs - Environment 2
         run: >
           echo "Deployment Task ID: ${{
