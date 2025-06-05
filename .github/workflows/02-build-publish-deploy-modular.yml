@@ -24,11 +24,11 @@ jobs:
           serverUrl: '${{ vars.SERVERURL }}'
           username: '${{ secrets.USERNAME }}'
           password: '${{ secrets.PASSWORD }}'
-          action: create
-          manifestPath: /deployit-manifest-1.xml
-          outputPath: /outputdar
+          action: 'create'
+          manifestPath: '/my-manifest.xml'
+          outputPath: '/outputdar'
           versionNumber: '1.0'
-          packageName: appForAction-1.0.dar
+          packageName: 'appForAction-1.0.dar'
       - name: Show DAR Path
         run: >
           echo "DAR package created at: ${{
@@ -40,7 +40,7 @@ jobs:
           serverUrl: '${{ vars.SERVERURL }}'
           username: '${{ secrets.USERNAME }}'
           password: '${{ secrets.PASSWORD }}'
-          action: publish
+          action: 'publish'
           darPackagePath: '${{ steps.create_pkg.outputs.darPackagePath }}'
       - name: Show Published Package ID
         run: >
@@ -53,9 +53,9 @@ jobs:
           serverUrl: '${{ vars.SERVERURL }}'
           username: '${{ secrets.USERNAME }}'
           password: '${{ secrets.PASSWORD }}'
-          action: deploy
+          action: 'deploy'
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
-          environmentId: Environments/envForAction
+          environmentId: 'Environments/envForAction'
       - name: Show Deployment Task IDs - Environment 1
         run: >
           echo "Deployment Task ID: ${{
