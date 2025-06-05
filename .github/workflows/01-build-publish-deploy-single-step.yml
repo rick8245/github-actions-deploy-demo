@@ -30,7 +30,7 @@ jobs:
           serverUrl:     ${{ vars.SERVERURL }}
           username:      ${{ secrets.USERNAME }}
           password:      ${{ secrets.PASSWORD }}
-          manifestPath:  '/deployit-manifest-1.xml'
+          manifestPath:  '/my-manifest.xml'
           action:        'create_publish_deploy'
           outputPath:    '/outputdar'
           versionNumber: '1.0'
