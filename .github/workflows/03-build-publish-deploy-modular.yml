@@ -19,7 +19,7 @@ jobs:
 
       - name: Build with Gradle
         id: build
-        run: ./gradlew build --no-daemon --console=plain
+        run: ./gradlew buildAllJars --no-daemon --console=plain
 
       - name: Create DAR Package
         id: create_pkg
@@ -29,7 +29,7 @@ jobs:
           username: '${{ secrets.USERNAME }}'
           password: '${{ secrets.PASSWORD }}'
           action: 'create'
-          manifestPath: '/my-manifest.xml'
+          manifestPath: '/manifest/01-build-publish-deploy.xml'
           outputPath: '/outputdar'
           versionNumber: '1.0'
           packageName: 'appForAction-1.0.dar'
