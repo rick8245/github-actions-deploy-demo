@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="0.0" application="serviceAction1">
+  <application />
+  <orchestrator />
+  <deployables>
+    <file.Archive name="/service1" file="/build/libs/service1-0.0.1.jar">
+      <targetPath>/tmp</targetPath>
+      <targetFileName>service1-0.0.1.jar</targetFileName>
+    </file.Archive>
+  </deployables>
+  <applicationDependencies />
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+  <templates />
+  <boundTemplates />
+</udm.DeploymentPackage>
