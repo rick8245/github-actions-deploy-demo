@@ -36,7 +36,7 @@ jobs:
           versionNumber: '2.0'
           packageName:   'appForAction-2.0.dar'
           environmentId: 'Environments/envForAction1'
-          rollback:      'no'
+          rollback:      'false'
 
       - name: Show Action Outputs
         run: |
