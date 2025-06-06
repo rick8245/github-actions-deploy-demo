@@ -62,7 +62,17 @@ tasks.register('service2Jar', Jar) {
 	destinationDirectory.set(layout.buildDirectory.dir("libs"))
 }
 
+tasks.register('service3Jar', Jar) {
+	dependsOn tasks.named('bootJar')
+	archiveBaseName.set("service3")
+	archiveVersion.set("0.0.1")
+	from {
+		zipTree(tasks.named('bootJar').get().archiveFile)
+	}
+	destinationDirectory.set(layout.buildDirectory.dir("libs"))
+}
+
 // Unified build task
 tasks.register('buildAllJars') {
-	dependsOn 'build', 'demo002Jar', 'service1Jar', 'service2Jar'
+	dependsOn 'build', 'demo002Jar', 'service1Jar', 'service2Jar', 'service3Jar'
 }
