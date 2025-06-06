@@ -1,0 +1,78 @@
+name: Build Publish Three Service
+
+'on':
+  - workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: adopt
+          java-version: '17'
+
+      - name: Grant execute permissions to gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        id: build
+        run: ./gradlew buildAllJars --no-daemon --console=plain
+
+      - name: Create and Publish - Service 1
+        id: service1
+        uses: digital-ai/github-actions-deploy@D-227999
+        with:
+          serverUrl: '${{ vars.SERVERURL }}'
+          username: '${{ secrets.USERNAME }}'
+          password: '${{ secrets.PASSWORD }}'
+          action: 'create_publish'
+          manifestPath: '/manifest/01-Service.xml'
+          outputPath: '/outputdar'
+          versionNumber: '1.0'
+          packageName: 'Service1-1.0.dar'
+
+      - name: Output - Service 1
+        run: |
+          echo "Service 1 DAR Path: ${{ steps.service1.outputs.darPackagePath }}"
+          echo "Service 1 Deployment Package ID: ${{ steps.service1.outputs.deploymentPackageId }}"
+
+      - name: Create and Publish - Service 2
+        id: service2
+        uses: digital-ai/github-actions-deploy@D-227999
+        with:
+          serverUrl: '${{ vars.SERVERURL }}'
+          username: '${{ secrets.USERNAME }}'
+          password: '${{ secrets.PASSWORD }}'
+          action: 'create_publish'
+          manifestPath: '/manifest/02-Service.xml'
+          outputPath: '/outputdar'
+          versionNumber: '1.0'
+          packageName: 'Service2-1.0.dar'
+
+      - name: Output - Service 2
+        run: |
+          echo "Service 2 DAR Path: ${{ steps.service2.outputs.darPackagePath }}"
+          echo "Service 2 Deployment Package ID: ${{ steps.service2.outputs.deploymentPackageId }}"
+
+      - name: Create and Publish - Service 3
+        id: service3
+        uses: digital-ai/github-actions-deploy@D-227999
+        with:
+          serverUrl: '${{ vars.SERVERURL }}'
+          username: '${{ secrets.USERNAME }}'
+          password: '${{ secrets.PASSWORD }}'
+          action: 'create_publish'
+          manifestPath: '/manifest/03-Service.xml'
+          outputPath: '/outputdar'
+          versionNumber: '1.0'
+          packageName: 'Service3-1.0.dar'
+
+      - name: Output - Service 3
+        run: |
+          echo "Service 3 DAR Path: ${{ steps.service3.outputs.darPackagePath }}"
+          echo "Service 3 Deployment Package ID: ${{ steps.service3.outputs.deploymentPackageId }}"
