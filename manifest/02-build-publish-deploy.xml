@@ -4,7 +4,7 @@
   <orchestrator />
   <deployables>
     <file.Archive name="/demoJar2" file="/build/libs/demo-0.0.2.jar">
-      <targetPath>/tmp1</targetPath>
+      <targetPath>/tmp</targetPath>
       <targetFileName>demo-0.0.2.jar</targetFileName>
     </file.Archive>
   </deployables>
