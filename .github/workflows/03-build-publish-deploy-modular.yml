@@ -63,7 +63,7 @@ jobs:
           password: '${{ secrets.PASSWORD }}'
           action: 'deploy'
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
-          environmentId: 'Environments/envForAction'
+          environmentId: 'Environments/envForAction1'
 
       - name: Show Deployment Task IDs - Environment 1
         run: >
@@ -82,7 +82,7 @@ jobs:
           password: '${{ secrets.PASSWORD }}'
           action: 'deploy'
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
-          environmentId: Environments/envForAction2
+          environmentId: 'Environments/envForAction2'
 
       - name: Show Deployment Task IDs - Environment 2
         run: >
