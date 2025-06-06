@@ -34,7 +34,7 @@ jobs:
           manifestPath: '/manifest/service-01.xml'
           outputPath: '/outputdar'
           versionNumber: '1.0'
-          packageName: 'Service1-1.0.dar'
+          packageName: 'service1-1.0.dar'
 
       - name: Output - Service 1
         run: |
@@ -52,7 +52,7 @@ jobs:
           manifestPath: '/manifest/service-02.xml'
           outputPath: '/outputdar'
           versionNumber: '1.0'
-          packageName: 'Service2-1.0.dar'
+          packageName: 'service2-1.0.dar'
 
       - name: Output - Service 2
         run: |
@@ -70,7 +70,7 @@ jobs:
           manifestPath: '/manifest/service-03.xml'
           outputPath: '/outputdar'
           versionNumber: '1.0'
-          packageName: 'Service3-1.0.dar'
+          packageName: 'service3-1.0.dar'
 
       - name: Output - Service 3
         run: |
