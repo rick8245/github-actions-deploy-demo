@@ -21,7 +21,7 @@ jobs:
 
       - name: Build with Gradle
         id: build
-        run: ./gradlew build --no-daemon --console=plain
+        run: ./gradlew buildAllJars --no-daemon --console=plain
 
       - name: Create, Publish, and Deploy Package
         id: deploy
@@ -30,12 +30,12 @@ jobs:
           serverUrl:     ${{ vars.SERVERURL }}
           username:      ${{ secrets.USERNAME }}
           password:      ${{ secrets.PASSWORD }}
-          manifestPath:  '/my-manifest.xml'
+          manifestPath:  '/manifest/01-build-publish-deploy.xml'
           action:        'create_publish_deploy'
           outputPath:    '/outputdar'
           versionNumber: '1.0'
           packageName:   'appForAction-1.0.dar'
-          environmentId: 'Environments/envForAction'
+          environmentId: 'Environments/envForAction1'
           rollback:      'yes'
 
       - name: Show Action Outputs
