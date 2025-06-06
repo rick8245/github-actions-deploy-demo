@@ -3,7 +3,7 @@
   <application />
   <orchestrator />
   <deployables>
-    <file.Archive name="/demoJar" file="/build/libs/demo-0.0.1.jar">
+    <file.Archive name="/demoJar1" file="/build/libs/demo-0.0.1.jar">
       <targetPath>/tmp</targetPath>
       <targetFileName>demo-0.0.1.jar</targetFileName>
     </file.Archive>
