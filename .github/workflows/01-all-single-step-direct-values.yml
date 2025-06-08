@@ -1,4 +1,4 @@
-name: 01 Build Publish Deploy Single Step
+name: 01 All single step direct values
 
 on: [workflow_dispatch]
 
