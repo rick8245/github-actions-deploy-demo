@@ -1,0 +1,75 @@
+name: 02 All single step - user inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifestPath:
+        description: 'Manifest file path'
+        default: 'manifest/01-build-publish-deploy.xml'
+        required: true
+      action:
+        description: 'Action to perform'
+        default: 'create_publish_deploy'
+        required: false
+      outputPath:
+        description: 'Output path'
+        default: 'outputdar'
+        required: true
+      versionNumber:
+        description: 'Package version number'
+        default: '1.0'
+        required: false
+      packageName:
+        description: 'DAR package name'
+        default: 'appForAction-1.0.dar'
+        required: false
+      environmentId:
+        description: 'Target environment ID'
+        default: 'Environments/envForAction1'
+        required: true
+      rollback:
+        description: 'rollback'
+        default: 'yes'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Grant execute permissions to gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        id: build
+        run: ./gradlew buildAllJars --no-daemon --console=plain
+
+      - name: Create, Publish, and Deploy Package
+        id: deploy
+        uses: digital-ai/github-actions-deploy@D-227999
+        with:
+          serverUrl:     ${{ vars.SERVERURL }}
+          username:      ${{ secrets.USERNAME }}
+          password:      ${{ secrets.PASSWORD }}
+          manifestPath:  ${{ github.event.inputs.manifestPath }}
+          action:        ${{ github.event.inputs.action }}
+          outputPath:    ${{ github.event.inputs.outputPath }}
+          versionNumber: ${{ github.event.inputs.versionNumber }}
+          packageName:   ${{ github.event.inputs.packageName }}
+          environmentId: ${{ github.event.inputs.environmentId }}
+          rollback:      ${{ github.event.inputs.rollback }}
+
+      - name: Show Action Outputs
+        run: |
+          echo "DAR Package Path: ${{ steps.deploy.outputs.darPackagePath }}"
+          echo "Deployment Package ID: ${{ steps.deploy.outputs.deploymentPackageId }}"
+          echo "Deployment Task ID: ${{ steps.deploy.outputs.deploymentTaskId }}"
+          echo "Rollback Task ID: ${{ steps.deploy.outputs.rollbackTaskId }}"
