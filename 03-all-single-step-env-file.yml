@@ -1,4 +1,4 @@
-name: 01 All single step - env file
+name: 03 All single step - env file
 
 on: [workflow_dispatch]
 
