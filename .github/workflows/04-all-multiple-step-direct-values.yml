@@ -1,4 +1,4 @@
-name: Build Publish and Deploy - Modular
+name: 01 All multiple steps - direct values
 'on':
   - workflow_dispatch
 jobs:
@@ -65,29 +65,10 @@ jobs:
           deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
           environmentId: 'Environments/envForAction1'
 
-      - name: Show Deployment Task IDs - Environment 1
+      - name: Show Deployment Task IDs
         run: >
           echo "Deployment Task ID: ${{
           steps.deploy_pkg.outputs.deploymentTaskId }}"
 
           echo "Rollback Task ID (if any): ${{
           steps.deploy_pkg.outputs.rollbackTaskId }}"
-
-      - name: Deploy DAR Package - Environment 2
-        id: deploy_pkg2
-        uses: digital-ai/github-actions-deploy@D-227999
-        with:
-          serverUrl: '${{ vars.SERVERURL }}'
-          username: '${{ secrets.USERNAME }}'
-          password: '${{ secrets.PASSWORD }}'
-          action: 'deploy'
-          deploymentPackageId: '${{ steps.publish_pkg.outputs.deploymentPackageId }}'
-          environmentId: 'Environments/envForAction2'
-
-      - name: Show Deployment Task IDs - Environment 2
-        run: >
-          echo "Deployment Task ID: ${{
-          steps.deploy_pkg2.outputs.deploymentTaskId }}"
-
-          echo "Rollback Task ID (if any): ${{
-          steps.deploy_pkg2.outputs.rollbackTaskId }}"
