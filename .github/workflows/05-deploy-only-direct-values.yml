@@ -1,0 +1,39 @@
+name: 05 Deploy only - direct values
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: adopt
+          java-version: '17'
+
+      - name: Grant execute permissions to gradlew
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew buildAllJars --no-daemon --console=plain
+
+      - name: Deploy DAR Package
+        id: deploy_pkg
+        uses: digital-ai/github-actions-deploy@D-227999
+        with:
+          serverUrl:     ${{ vars.SERVERURL }}
+          username:      ${{ secrets.USERNAME }}
+          password:      ${{ secrets.PASSWORD }}
+          action:        'deploy'
+          deploymentPackageId: 'Applications/appForAction/1.0'
+          environmentId:       'Environments/envForAction2'
+
+      - name: Show Deployment Task IDs
+        run: |
+          echo "Deployment Task ID: ${{ steps.deploy_pkg.outputs.deploymentTaskId }}"
+          echo "Rollback Task ID:   ${{ steps.deploy_pkg.outputs.rollbackTaskId }}"
