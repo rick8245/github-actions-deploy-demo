@@ -1,4 +1,4 @@
-name: 05 Deploy only - direct values
+name: 06 Deploy only - direct values
 
 on:
   workflow_dispatch:
