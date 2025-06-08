@@ -1,4 +1,4 @@
-name: 01 All multiple steps - direct values
+name: 04 All multiple steps - direct values
 'on':
   - workflow_dispatch
 jobs:
