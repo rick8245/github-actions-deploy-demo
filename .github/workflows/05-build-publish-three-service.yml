@@ -1,4 +1,4 @@
-name: 05 Build publish multiple manifests - direct values
+name: 05 Multiple manifests - direct values
 
 'on':
   - workflow_dispatch
