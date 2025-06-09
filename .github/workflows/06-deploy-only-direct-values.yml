@@ -24,7 +24,7 @@ jobs:
 
       - name: Deploy DAR Package
         id: deploy_pkg
-        uses: digital-ai/github-actions-deploy@main
+        uses: digital-ai/github-actions-deploy@v2.0.0
         with:
           serverUrl:     ${{ vars.SERVERURL }}
           username:      ${{ secrets.USERNAME }}
