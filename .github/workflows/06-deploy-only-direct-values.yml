@@ -36,4 +36,4 @@ jobs:
       - name: Show Deployment Task IDs
         run: |
           echo "Deployment Task ID: ${{ steps.deploy_pkg.outputs.deploymentTaskId }}"
-          echo "Rollback Task ID:   ${{ steps.deploy_pkg.outputs.rollbackTaskId }}"
+          echo "Rollback Task ID(if any):   ${{ steps.deploy_pkg.outputs.rollbackTaskId }}"
