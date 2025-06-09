@@ -27,7 +27,7 @@ All workflow definitions are located in the `.github/workflows` directory of thi
 This workflow is configured for manual triggering via the GitHub Actions interface, leveraging the `workflow_dispatch` event. To execute the workflow:
 
 1.  Navigate to the **Actions** tab within your GitHub repository.
-2.  From the "All workflows" sidebar, select the specific workflow you wish to run (e.g., "Java Gradle Build and Deploy").
+2.  From the "All workflows" sidebar, select the specific workflow you wish to run.
 3.  Click the **Run workflow** button, usually found in the top right corner of the workflow details page.
 
 ---
