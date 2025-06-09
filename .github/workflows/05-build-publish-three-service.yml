@@ -25,7 +25,7 @@ jobs:
 
       - name: Create and Publish - Service 1
         id: service1
-        uses: digital-ai/github-actions-deploy@D-227999
+        uses: digital-ai/github-actions-deploy@main
         with:
           serverUrl: '${{ vars.SERVERURL }}'
           username: '${{ secrets.USERNAME }}'
