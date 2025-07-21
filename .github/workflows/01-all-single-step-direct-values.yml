@@ -27,7 +27,7 @@ jobs:
         id: deploy
         uses: digital-ai/github-actions-deploy@v2.0.0
         with:
-          serverUrl:     "https://deploy-nightly.devops.dev.digitalai.cloud"
+          serverUrl:     ${{ vars.SERVERURL }}
           username:      ${{ secrets.USERNAME }}
           password:      ${{ secrets.PASSWORD }}
           manifestPath:  'manifest/01-build-publish-deploy.xml'
